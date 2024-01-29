@@ -1,0 +1,13 @@
+﻿
+@{
+   var contacts =(List<string>) ViewData["contacts"];
+}
+<ul>
+
+@{
+    foreach(var name in contacts)
+    {
+        <li>@name</li>
+    }
+}
+</ul>
