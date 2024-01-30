@@ -1,13 +1,60 @@
-﻿
+﻿@model List<Contact>
 @{
-   var contacts =(List<string>) ViewData["contacts"];
+    //var contacts =(List<string>) ViewData["contacts"];
 }
+@*
 <ul>
 
-@{
-    foreach(var name in contacts)
-    {
-        <li>@name</li>
+    @{
+        ViewBag.Contacts = ViewBag.Contacts ?? new List<string>();
+        foreach (var name in Model)
+        {
+            <li>@name</li>
+        }
     }
-}
+
 </ul>
+*@
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            @* <th scope="col">@Html.DisplayNameFor(model => model.Id)</th *@
+            <th scope="col">Prénom</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Numéro</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @*{ Mauvaise méthode Model est une liste je peux just eutiliser foreach. Voir Ci-dessous
+            for (int i = 1; i < Model.Count; i++)
+            {
+                <tr>
+                    <th scope="row">@i</th>
+                    <td>@{Contact contact = Model.FirstOrDefault(c => c.Id == i);}
+                    @contact.Prenom</td>
+                    <td>Otto</td>
+                    <td>mdo</td>
+                </tr>
+            }
+        }*@
+
+        @{
+            foreach(var contact in Model)
+            {
+                <tr>
+                    <th scope="row">@contact.Id</th>
+                    <td>@contact.Prenom
+</td>
+                    <td>@contact.Nom</td>
+                    <td>@contact.Telephone</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
