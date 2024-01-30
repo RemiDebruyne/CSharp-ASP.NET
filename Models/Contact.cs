@@ -16,7 +16,8 @@ namespace ExerciceContact.Models
         [Display(Name = "Telephone")]
         public string Telephone { get; set; }
 
-        public Contact(int  id, string prenom, string nom, string telephone)
+        public Contact() { }
+        public Contact(int id, string prenom, string nom, string telephone)
         {
             Id = id;
             Prenom = prenom;
